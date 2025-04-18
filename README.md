@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TebakBaku - Kuis Kata Baku Bahasa Indonesia
 
-## Getting Started
+**TebakBaku** adalah aplikasi kuis interaktif yang menguji pengetahuan pengguna tentang kata-kata baku dalam Bahasa Indonesia. Pengguna akan diberikan kata dan diminta menebak apakah kata tersebut merupakan kata baku atau tidak.
 
-First, run the development server:
+## Fitur
+- Kuis interaktif berbasis kata baku dan tidak baku
+- Tersedia 2 mode tema: **Gelap** dan **Terang**, untuk kenyamanan mata pengguna
+- **Sound effect** untuk memberikan respons suara jika jawaban benar atau salah, dengan opsi untuk mematikan suara
+- Terdapat tombol **Reset** untuk memulai kuis dari awal
+- **Streak**: Fitur streak beruntun yang akan menghitung berapa banyak jawaban benar berturut-turut. Setiap kelipatan 5 jawaban benar berturut-turut akan disertai dengan **efek confetti** sebagai perayaan
+- Antarmuka yang sederhana dan mudah digunakan
+- Cocok untuk belajar Bahasa Indonesia dengan cara yang menyenangkan
 
+## Cara Menjalankan Proyek
+
+### 1. Clone Repositori
+Pertama, clone repositori ini ke komputer lokal:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ReintB/TebakBaku.git
+cd tebakbaku
+```
+### 2. Instal Depedensi
+Jika menggunakan Node.js atau framework lain, pastikan dependensi proyek terinstal. Jalankan perintah berikut:
+```bash
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Jalankan Proyek
+Setelah semua dependensi terinstal, jalankan proyek dengan perintah berikut:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Akses di Browser
+Buka browser dan akses proyek melalui URL:
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Sumber Data
+Daftar kata baku dan tidak baku dalam proyek ini bersumber dari file JSON buatan @lantip yang dapat diakses di repositori berikut: https://github.com/lantip/baku-tidak-baku
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Terima kasih sebesar-besarnya kepada @lantip atas kontribusinya yang luar biasa!
