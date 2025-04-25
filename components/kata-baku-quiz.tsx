@@ -21,7 +21,6 @@ export default function KataBakuQuiz() {
   const [quizItems, setQuizItems] = useState<Array<{ incorrect: string; correct: string }>>([])
   const [currentQuizItem, setCurrentQuizItem] = useState<{ incorrect: string; correct: string } | null>(null)
   const [usedItems, setUsedItems] = useState<Set<string>>(new Set())
-  const [isAnimating, setIsAnimating] = useState(false)
   const [streakHighlight, setStreakHighlight] = useState(false)
 
   const triggerConfetti = useCallback(() => {
@@ -48,7 +47,6 @@ export default function KataBakuQuiz() {
   const getNextQuestion = useCallback((items = quizItems) => {
     if (items.length === 0) return
 
-    setIsAnimating(true)
 
     setTimeout(() => {
       if (usedItems.size > items.length * 0.7) {
@@ -70,7 +68,6 @@ export default function KataBakuQuiz() {
       setOptions(shuffledOptions)
       setAnswered(false)
       setSelectedAnswer(null)
-      setIsAnimating(false)
     }, 300)
   }, [quizItems, usedItems])
 
@@ -94,7 +91,7 @@ export default function KataBakuQuiz() {
         }
 
         if (soundEnabled) {
-          const audio = new Audio("/correct.mp3")
+          const audio = new Audio("/correct.wav")
           audio.play().catch((e) => console.error("Audio play failed:", e))
         }
       } else {
@@ -123,21 +120,6 @@ export default function KataBakuQuiz() {
     const shuffledOptions = [firstItem.correct, firstItem.incorrect].sort(() => Math.random() - 0.5)
     setOptions(shuffledOptions)
   }, [])
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (answered || !currentQuizItem) return
-
-      if (e.key === "1" || e.key === "ArrowLeft") {
-        handleAnswer(options[0])
-      } else if (e.key === "2" || e.key === "ArrowRight") {
-        handleAnswer(options[1])
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [options, answered, currentQuizItem, handleAnswer])
 
   useEffect(() => {
     if (streakHighlight) {
@@ -176,19 +158,21 @@ export default function KataBakuQuiz() {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <Card className="w-full max-w-md mx-auto border border-border bg-card">
-        <CardHeader className="pb-3 pt-6 px-6">
+    <div className="w-full">
+      <Card className="w-full max-w-md mx-auto">
+        <CardHeader className="px-6">
           <div className="flex items-center justify-between">
             <CardTitle className="text-xl font-semibold tracking-tight">TebakBaku</CardTitle>
             <ThemeToggle />
           </div>
-          <CardDescription className="text-sm text-muted-foreground pt-1.5">
+          <CardDescription className="text-sm text-muted-foreground">
             Seberapa Baku Bahasa Kamu?
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="px-6 pb-2 pt-0">
+        <Separator/>
+
+        <CardContent className="px-6 pb-2 pt-2">
           <div className="flex justify-between mb-6">
             <div className="flex items-center gap-1.5">
               <div className="text-sm font-medium text-muted-foreground">Benar</div>
@@ -205,13 +189,13 @@ export default function KataBakuQuiz() {
               </div>
             </div>
           </div>
-
-          <div className={`transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}>
-            <div className="rounded-md border border-border bg-muted/40 p-4 mb-6">
+            <div className="rounded-md border border-border bg-muted/40 p-4">
               <p className="text-sm font-medium">Manakah kata baku yang benar?</p>
             </div>
 
-            <div className="space-y-2.5 mb-6">
+            <Separator className="my-4"/>
+
+            <div className="space-y-3">
               {options.map((option, index) => {
                 const isCorrectAnswer = option === currentQuizItem.correct
                 const isSelected = selectedAnswer === option
@@ -234,48 +218,39 @@ export default function KataBakuQuiz() {
                     disabled={answered}
                   >
                     <span className="flex items-center">
-                      <kbd className="px-1.5 py-0.5 text-xs bg-muted dark:bg-muted/50 rounded mr-2 text-muted-foreground">
-                        {index + 1}
-                      </kbd>
                       {option}
                     </span>
                   </Button>
                 )
               })}
             </div>
-
-            <div className="text-xs text-muted-foreground text-center mb-2">
-              Tekan <kbd className="px-1 py-0.5 bg-muted rounded">1</kbd> atau {" "}
-              <kbd className="px-1 py-0.5 bg-muted rounded">2</kbd> untuk menjawab
-            </div>
-          </div>
         </CardContent>
 
-        <Separator className="mb-4" />
-
-        <CardFooter className="px-6 pb-6 pt-0 flex items-center justify-between">
+        <CardFooter className="px-6 flex items-center justify-between">
           <Button variant="ghost" size="sm" onClick={resetQuiz} className="h-8 px-3 text-xs">
             <RotateCcw className="h-3.5 w-3.5 mr-2" />
             Reset
           </Button>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">Suara</span>
             <Button variant="outline" size="icon" className="h-8 w-8 rounded-md" onClick={toggleSound}>
               {soundEnabled ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
             </Button>
           </div>
         </CardFooter>
-      </Card>
 
-      <footer className="w-full max-w-md mx-auto mt-6 flex items-center justify-center text-xs text-muted-foreground px-2">
-        <div className="flex items-center">
-          <span>© {new Date().getFullYear()} Dibuat dengan ❤️ oleh </span>
-          <Link href="https://github.com/ReintB" className="ml-1 hover:text-foreground transition-colors">
+        <Separator/>
+
+        <footer className="w-full max-w-md mx-auto flex items-center justify-center text-xs text-muted-foreground">
+        <div>
+          <span>© 2025 Dibuat dengan ❤️ oleh </span>
+          <Link href="https://github.com/ReintB" className="hover:text-foreground transition-colors">
             ReintB
           </Link>
         </div>
       </footer>
+
+      </Card>
     </div>
   )
 }
