@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { quizData } from "@/data/kata-baku"
 import confetti from "canvas-confetti"
+import { toast } from "sonner"
 
 export function useQuiz() {
   const [score, setScore] = useState({ correct: 0, wrong: 0 })
@@ -76,6 +77,7 @@ export function useQuiz() {
         const newStreak = streak + 1
         setScore((prev) => ({ ...prev, correct: prev.correct + 1 }))
         setStreak(newStreak)
+        toast.success("Jawaban benar!")
 
         if (newStreak > 0 && newStreak % 5 === 0) {
           triggerConfetti()
@@ -89,6 +91,7 @@ export function useQuiz() {
       } else {
         setScore((prev) => ({ ...prev, wrong: prev.wrong + 1 }))
         setStreak(0)
+        toast.error("Jawaban salah!")
         if (soundEnabled) {
           const audio = new Audio("/wrong.mp3")
           audio.play().catch((e) => console.error("Audio play failed:", e))
