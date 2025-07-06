@@ -3,7 +3,7 @@
 **TebakBaku** adalah aplikasi kuis interaktif yang menguji pengetahuan pengguna tentang kata-kata baku dalam Bahasa Indonesia.  
 Pengguna akan diberikan kata dan diminta menebak apakah kata tersebut merupakan kata baku atau tidak.
 
-## ✨ Fitur
+## Fitur
 
 - **Kuis interaktif** berbasis kata baku dan tidak baku
 - **Dua mode tema:** Gelap (dark) dan Terang (light), dengan toggle theme berbasis [next-themes](https://github.com/pacocoursey/next-themes)
@@ -17,7 +17,7 @@ Pengguna akan diberikan kata dan diminta menebak apakah kata tersebut merupakan 
 - **Aksesibilitas**: Navigasi mudah, kontras warna baik
 - **Open source**: Kode dapat diakses di [GitHub](https://github.com/ReintB/TebakBaku)
 
-## 🚀 Cara Menjalankan Proyek
+## Cara Menjalankan Proyek
 
 ### 1. Clone Repositori
 
@@ -45,18 +45,14 @@ Buka browser dan akses:
 http://localhost:3000
 ```
 
-## 📦 Sumber Data
+## Sumber Data
 
 Daftar kata baku dan tidak baku dalam proyek ini bersumber dari file JSON buatan @lantip yang dapat diakses di repositori berikut:  
 https://github.com/lantip/baku-tidak-baku
 
-Terima kasih kepada @lantip atas kontribusinya!
+Terima kasih kepada @lantip
 
-## 🔗 Tautan Penting
+## Tautan Penting
 
 - Demo: [tebakbaku.vercel.app](https://tebakbaku.vercel.app)
 - Repo: [github.com/ReintB/TebakBaku](https://github.com/ReintB/TebakBaku)
-
-## 📝 Lisensi
-
-MIT License
