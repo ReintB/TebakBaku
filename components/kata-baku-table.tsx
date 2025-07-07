@@ -209,7 +209,7 @@ export default function KataBakuTable() {
           {searchTerm && (
             <div className="p-4 text-center">
               <p className="text-xs text-muted-foreground">
-                Menampilkan {filteredData.length} hasil dari pencarian "{searchTerm}"
+                Menampilkan {filteredData.length} hasil dari pencarian &quot;{searchTerm}&quot;
               </p>
             </div>
           )}
@@ -227,7 +227,7 @@ export default function KataBakuTable() {
                     Tidak ada kata yang ditemukan
                   </h3>
                   <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                    Tidak ada kata yang cocok dengan pencarian "{searchTerm}".
+                    Tidak ada kata yang cocok dengan pencarian &quot;{searchTerm}&quot;.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
