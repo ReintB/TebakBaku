@@ -47,36 +47,38 @@ export default function KataBakuQuiz() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center py-14 px-2 md:px-0 relative">
-      <QuizHeader />
-      <Card className="relative w-full max-w-3xl rounded-xl shadow-sm border-0 bg-white/80 dark:bg-background/80 backdrop-blur-lg ring-1 ring-primary/10">
-        <Separator />
-        <CardContent className="px-4 md:px-12 pb-8 pt-8 flex flex-col gap-8">
-          <ScoreDisplay
-            score={score}
-            streak={streak}
-            streakHighlight={streakHighlight}
-          />
-          <QuizQuestion question="Manakah kata baku yang benar?" />
-          <div className="flex flex-col gap-7">
-            <AnswerOptions
-              options={options}
-              currentQuizItem={currentQuizItem}
-              selectedAnswer={selectedAnswer}
-              answered={answered}
-              onAnswer={handleAnswer}
+    <section className="w-full min-h-screen bg-gradient-to-tl from-primary/5 via-background to-muted/40 dark:from-background dark:to-muted/30 flex items-center justify-center">
+      <div className="flex flex-col items-center py-14 px-2 md:px-0 w-full">
+        <QuizHeader />
+        <Card className="relative w-full max-w-3xl rounded-xl shadow-sm border-0 bg-white/80 dark:bg-background/80 backdrop-blur-lg ring-1 ring-primary/10">
+          <Separator />
+          <CardContent className="px-4 md:px-12 pb-8 pt-8 flex flex-col gap-8">
+            <ScoreDisplay
+              score={score}
+              streak={streak}
+              streakHighlight={streakHighlight}
             />
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6">
-            <QuizControls
-              onReset={resetQuiz}
-              soundEnabled={soundEnabled}
-              onToggleSound={toggleSound}
-              large
-            />
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+            <QuizQuestion question="Manakah kata baku yang benar?" />
+            <div className="flex flex-col gap-7">
+              <AnswerOptions
+                options={options}
+                currentQuizItem={currentQuizItem}
+                selectedAnswer={selectedAnswer}
+                answered={answered}
+                onAnswer={handleAnswer}
+              />
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6">
+              <QuizControls
+                onReset={resetQuiz}
+                soundEnabled={soundEnabled}
+                onToggleSound={toggleSound}
+                large
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
   )
 }
