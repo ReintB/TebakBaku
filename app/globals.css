@@ -123,3 +123,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .bg-section-1 {
+    @apply bg-white dark:bg-zinc-900;
+  }
+
+  .bg-section-2 {
+    @apply bg-muted/40 dark:bg-zinc-800;
+  }
+}

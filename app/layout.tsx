@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
+import ScrollToTopButton from "@/components/scroll-to-top-button"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           disableTransitionOnChange
         >
           {children}
+          <ScrollToTopButton />
           <Toaster richColors position="bottom-right" />
         </ThemeProvider>
       </body>
