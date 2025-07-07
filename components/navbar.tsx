@@ -14,7 +14,7 @@ export default function Navbar({ onQuizClick, onTableClick, onHomeClick }: Navba
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <nav className="w-full sticky top-0 z-30 bg-background/60 backdrop-blur border-b border-border shadow-sm">
+    <nav className="w-full sticky top-0 z-30 bg-background/30 backdrop-blur border-b border-border shadow-sm">
       <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-4">
         <button
           onClick={onHomeClick}

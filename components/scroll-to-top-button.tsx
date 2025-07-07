@@ -20,11 +20,11 @@ export default function ScrollToTopButton() {
     return (
         <Button
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 rounded-full w-16 h-16 p-0 shadow-2xl hover:shadow-3xl transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-110 border-4 border-background/80 z-50"
+            className="fixed bottom-8 right-8 rounded-full w-14 h-14 p-0 shadow-2xl hover:shadow-3xl transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-110 border-4 border-background/80 z-50"
             size="lg"
             aria-label="Scroll to top"
         >
-            <span className="text-3xl">↑</span>
+            <span className="text-2xl">↑</span>
         </Button>
     );
 } 

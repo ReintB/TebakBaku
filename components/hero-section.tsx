@@ -2,6 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { Sparkles, BookOpenCheck, ListOrdered } from "lucide-react"
+import { Spotlight } from "@/components/ui/spotlight-new"
+import { useTheme } from "next-themes"
 
 interface HeroSectionProps {
   onStartQuiz: () => void
@@ -9,8 +11,22 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onStartQuiz, onShowTable }: HeroSectionProps) {
+  const { resolvedTheme } = useTheme()
+  // Gradasi abu-abu untuk light mode agar spotlight tetap terlihat dan netral
+  const lightGradient = "radial-gradient(68.54% 68.72% at 55.02% 31.46%, rgba(0,0,0,0.10) 0, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0) 80%)";
+  const lightGradient2 = "radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,0.06) 0, rgba(0,0,0,0.02) 80%, transparent 100%)";
+  const lightGradient3 = "radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,0.03) 0, rgba(0,0,0,0.01) 80%, transparent 100%)";
+  // Section background: putih untuk light mode, tetap gradasi untuk dark
+  const sectionBg = resolvedTheme === "light"
+    ? "bg-white"
+    : "bg-gradient-to-br from-primary/5 via-background to-muted/40 dark:from-background dark:to-muted/30";
   return (
-    <section className="relative flex items-center justify-center min-h-screen w-full text-center bg-gradient-to-br from-primary/5 via-background to-muted/40 dark:from-background dark:to-muted/30 overflow-hidden">
+    <section className={`relative flex items-center justify-center min-h-screen w-full text-center ${sectionBg} overflow-hidden`}>
+      <Spotlight
+        gradientFirst={resolvedTheme === "light" ? lightGradient : undefined}
+        gradientSecond={resolvedTheme === "light" ? lightGradient2 : undefined}
+        gradientThird={resolvedTheme === "light" ? lightGradient3 : undefined}
+      />
       <div className="z-10 mx-auto flex flex-col items-center text-center gap-6 -translate-y-8 md:-translate-y-14 pb-16">
         <span className="inline-flex items-center rounded-full bg-primary/10 px-5 py-1.5 text-base font-semibold text-primary my-4 shadow-sm text-lg">
           <Sparkles className="w-6 h-6 mr-2" />
