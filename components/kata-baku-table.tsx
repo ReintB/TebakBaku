@@ -171,24 +171,23 @@ export default function KataBakuTable() {
   );
 
   return (
-    <section id="tabel-kata-baku" className="w-full min-h-screen pt-30 pb-20 bg-gradient-to-br from-primary/5 via-background to-muted/40 dark:from-background dark:to-muted/30 shadow-[0_8px_32px_0_rgba(60,60,60,0.08)]">
-      <div className="w-full py-20 sm:px-2 md:px-6 lg:px-12 xl:px-24">
-        <div className="text-center mb-8">
-          <h2 className="text-5xl font-bold text-foreground mb-4 tracking-tight">
+    <section id="tabel-kata-baku" className="w-full min-h-screen pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-8 sm:pb-12 md:pb-16 lg:pb-20 bg-gradient-to-br from-primary/5 via-background to-muted/40 dark:from-background dark:to-muted/30 shadow-[0_8px_32px_0_rgba(60,60,60,0.08)]">
+      <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-24 py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 max-w-7xl mx-auto">
+        <div className="text-center mb-4 sm:mb-6 md:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2 sm:mb-3 md:mb-4 tracking-tight px-2">
             Tabel Kata Baku dan Tidak Baku
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-            Referensi lengkap kata baku dan tidak baku dalam bahasa Indonesia.
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-3 sm:mb-5 md:mb-8 px-3 sm:px-4">
             Tabel ini berisi kumpulan kata yang dapat membantu Anda
             menggunakan bahasa Indonesia yang benar.
           </p>
-          <div className="text-sm text-muted-foreground max-w-4xl mx-auto mb-8">
-            Data kata baku dan tidak baku diambil dari sumber repository GitHub <a href="https://github.com/lantip/baku-tidak-baku" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">lantip/baku-tidak-baku</a>. Terima kasih kepada para kontributor dan <a href="https://x.com/ivanlanin" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary font-semibold">@ivanlanin</a> atas data dan inspirasinya.
+          <div className="text-xs sm:text-sm text-muted-foreground max-w-4xl mx-auto mb-3 sm:mb-5 md:mb-8 px-3 sm:px-4">
+            Data kata baku dan tidak baku diambil dari repository GitHub <a href="https://github.com/lantip/baku-tidak-baku" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">lantip/baku-tidak-baku</a>. Terima kasih kepada para kontributor dan <a href="https://x.com/ivanlanin" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary font-semibold">@ivanlanin</a> atas data dan inspirasinya.
           </div>
         </div>
 
         {/* Search Section */}
-        <div className="w-full max-w-3xl mx-auto mb-8">
+        <div className="w-full max-w-3xl mx-auto mb-4 sm:mb-6 md:mb-8 px-2 sm:px-3">
           <div className="relative flex items-center">
             <span className="absolute left-3 text-muted-foreground">
               <Search className="w-5 h-5" />
@@ -207,8 +206,8 @@ export default function KataBakuTable() {
             )}
           </div>
           {searchTerm && (
-            <div className="p-4 text-center">
-              <p className="text-xs text-muted-foreground">
+            <div className="p-2 sm:p-3 md:p-4 text-center">
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Menampilkan {filteredData.length} hasil dari pencarian &quot;{searchTerm}&quot;
               </p>
             </div>
@@ -216,25 +215,25 @@ export default function KataBakuTable() {
         </div>
 
         <Card className="w-full shadow-md border-0 rounded-xl">
-          <CardContent className="pt-8 pb-8 px-4 md:px-12 flex flex-col gap-8">
+          <CardContent className="pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-8 px-2 sm:px-3 md:px-4 lg:px-12 flex flex-col gap-4 sm:gap-6 md:gap-8">
             {filteredData.length === 0 ? (
-              <div className="text-center py-20">
-                <div className="mb-6">
-                  <div className="w-20 h-20 mx-auto bg-muted/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-4xl">🔍</span>
+              <div className="text-center py-8 sm:py-12 md:py-16 lg:py-20">
+                <div className="mb-3 sm:mb-4 md:mb-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 mx-auto bg-muted/20 rounded-full flex items-center justify-center mb-2 sm:mb-3 md:mb-4">
+                    <span className="text-xl sm:text-2xl md:text-4xl">🔍</span>
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-2">
+                  <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-foreground mb-1 sm:mb-2">
                     Tidak ada kata yang ditemukan
                   </h3>
-                  <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                  <p className="text-muted-foreground mb-3 sm:mb-4 md:mb-6 max-w-md mx-auto text-xs sm:text-sm md:text-base px-2">
                     Tidak ada kata yang cocok dengan pencarian &quot;{searchTerm}&quot;.
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
                   <Button
                     variant="outline"
                     onClick={() => handleSearch("")}
-                    className="px-6 py-3"
+                    className="px-3 sm:px-4 md:px-6 py-2 sm:py-3"
                   >
                     Hapus Pencarian
                   </Button>
@@ -243,9 +242,9 @@ export default function KataBakuTable() {
             ) : (
               <>
                 {/* Mobile Layout */}
-                <div className="block xl:hidden space-y-6">
+                <div className="block xl:hidden space-y-3 sm:space-y-4 md:space-y-6">
                   <div>
-                    <div className="text-sm font-medium text-muted-foreground mb-4 px-2">
+                    <div className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 md:mb-4 px-2">
                       Semua Data
                     </div>
                     {isLoading ? renderLoadingSkeleton() : renderMobileTable(currentData, 0)}
@@ -253,14 +252,14 @@ export default function KataBakuTable() {
                 </div>
 
                 {/* Desktop Layout */}
-                <div className="hidden xl:grid xl:grid-cols-2 gap-6 pb-4">
+                <div className="hidden xl:grid xl:grid-cols-2 gap-3 sm:gap-4 md:gap-6 pb-2 sm:pb-3 md:pb-4">
                   <div className="space-y-2">{renderTableColumn(leftColumn, 0)}</div>
                   <div className="space-y-2">{renderTableColumn(rightColumn, 25)}</div>
                 </div>
 
                 {/* Centered Pagination */}
                 <div className="bg-gradient-to-r from-muted/10 to-muted/20 border-t border-border/30 rounded-xl py-2">
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+                  <div className="max-w-6xl mx-auto px-2 sm:px-3 md:px-4 lg:px-8 flex justify-center">
                     <Pagination>
                       <PaginationContent className="flex flex-wrap justify-center gap-1">
                         <PaginationItem>
@@ -285,7 +284,7 @@ export default function KataBakuTable() {
                                   e.preventDefault();
                                   handlePageChange(page as number);
                                 }}
-                                className="min-w-[32px] px-2 text-sm"
+                                className="min-w-[24px] sm:min-w-[28px] md:min-w-[32px] px-1 sm:px-1.5 md:px-2 text-xs sm:text-sm"
                               >
                                 {page}
                               </PaginationLink>
